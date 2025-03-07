@@ -1,113 +1,46 @@
-﻿using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Geometry
+﻿namespace Geometry
 {
-    public class Square : GeometricFigure
-    {
-        protected double lado;
-
-        public Square(double lado)
-        {
-            Nombre = "square";
-            this.lado = lado;
-            ValidateLado();
-        }
-
-        public double Lado
-        {
-            get { return lado; }
-            set
-            {
-                lado = value;
-                ValidateLado();
-            }
-        }
-
-        protected void ValidateLado()
-        {
-            if (lado <= 0)
-            {
-                throw new ArgumentException("El lado debe ser mayor que cero.");
-            }
-        }
-
-        public override double GetArea()
-        {
-            return lado * lado;
-        }
-
-        public override double GetPerimeter()
-        {
-            return 4 * lado;
-        }
-    }
-
     public class Rhombus : Square
     {
-        private double d1; // Diagonal mayor
-        private double d2; // Diagonal menor
+        private double _d1;
+        private double _d2;
 
-        // Constructor
-        public Rhombus(double d1, double d2) : base(Math.Sqrt((d1 * d1 / 2) + (d2 * d2 / 2)))
-        {
-            Nombre = "rhombus";
-            this.d1 = d1;
-            this.d2 = d2;
-            ValidateD1();
-            ValidateD2();
-        }
-
-        // Propiedad para la diagonal mayor 'd1'
         public double D1
         {
-            get { return d1; }
-            set
-            {
-                d1 = value;
-                ValidateD1();
-            }
+            get => _d1;
+            private set => _d1 = ValidateD1(value);
         }
 
-        // Propiedad para la diagonal menor 'd2'
         public double D2
         {
-            get { return d2; }
-            set
-            {
-                d2 = value;
-                ValidateD2();
-            }
+            get => _d2;
+            private set => _d2 = ValidateD2(value);
         }
 
-        // Método para validar la diagonal mayor 'd1'
-        private void ValidateD1()
+        public Rhombus(string name, double a, double d1, double d2) : base(name, a)
         {
-            if (d1 <= 0)
-            {
-                throw new ArgumentException("La diagonal mayor 'd1' debe ser mayor que cero.");
-            }
+            D1 = d1;
+            D2 = d2;
         }
 
-        // Método para validar la diagonal menor 'd2'
-        private void ValidateD2()
-        {
-            if (d2 <= 0)
-            {
-                throw new ArgumentException("La diagonal menor 'd2' debe ser mayor que cero.");
-            }
-        }
-
-        // Implementación del método abstracto GetArea()
         public override double GetArea()
         {
-            return (d1 * d2) / 2;
+            return (D1 * D2) / 2;
         }
 
-        // Implementación del método abstracto GetPerimeter()
         public override double GetPerimeter()
         {
-            return 4 * Lado;
+            return 4 * A;
+        }
+
+        private static double ValidateD1(double d1)
+        {
+            return d1 > 0 ? d1 : throw new ArgumentException("Diagonal D1 must be positive.");
+        }
+
+        private static double ValidateD2(double d2)
+        {
+            return d2 > 0 ? d2 : throw new ArgumentException("Diagonal D2 must be positive.");
         }
     }
 }

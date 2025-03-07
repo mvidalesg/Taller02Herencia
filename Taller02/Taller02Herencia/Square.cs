@@ -2,46 +2,33 @@
 {
     public class Square : GeometricFigure
     {
-        private double a; // Lado del cuadrado
+        private double _a;
 
-        // Constructor
-        public Square(double a)
-        {
-            Nombre = "square";
-            this.a = a;
-            ValidateA();
-        }
-
-        // Propiedad para el lado 'a'
         public double A
         {
-            get { return a; }
-            set
-            {
-                a = value;
-                ValidateA();
-            }
+            get => _a;
+            private set => _a = ValidateA(value);
         }
 
-        // Método para validar el lado 'a'
-        private void ValidateA()
+        public Square(string name, double a) : base(name)
         {
-            if (a <= 0)
-            {
-                throw new ArgumentException("El lado 'a' debe ser mayor que cero.");
-            }
+            A = a;
         }
 
-        // Implementación del método abstracto GetArea()
         public override double GetArea()
         {
-            return a * a;
+            return A * A;
         }
 
-        // Implementación del método abstracto GetPerimeter()
         public override double GetPerimeter()
         {
-            return 4 * a;
+            return 4 * A;
+        }
+
+        private static double ValidateA(double a)
+        {
+            return a > 0 ? a : throw new ArgumentException("Side A must be positive.");
         }
     }
 }
+

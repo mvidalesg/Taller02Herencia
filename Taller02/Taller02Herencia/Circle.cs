@@ -2,46 +2,33 @@
 {
     public class Circle : GeometricFigure
     {
-        private double r; // Radio del círculo
+        private double _r;
 
-        // Constructor
-        public Circle(double r)
-        {
-            Nombre = "circle";
-            this.r = r;
-            ValidateR();
-        }
-
-        // Propiedad para el radio 'r'
         public double R
         {
-            get { return r; }
-            set
-            {
-                r = value;
-                ValidateR();
-            }
+            get => _r;
+            private set => _r = ValidateR(value);
         }
 
-        // Método para validar el radio 'r'
-        private void ValidateR()
+        public Circle(string name, double r) : base(name)
         {
-            if (r <= 0)
-            {
-                throw new ArgumentException("El radio 'r' debe ser mayor que cero.");
-            }
+            R = r;
         }
 
-        // Implementación del método abstracto GetArea()
         public override double GetArea()
         {
-            return Math.PI * r * r;
+            return Math.PI * R * R;
         }
 
-        // Implementación del método abstracto GetPerimeter()
         public override double GetPerimeter()
         {
-            return 2 * Math.PI * r;
+            return 2 * Math.PI * R;
+        }
+
+        private static double ValidateR(double r)
+        {
+            return r > 0 ? r : throw new ArgumentException("Radius must be positive.");
         }
     }
 }
+
