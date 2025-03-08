@@ -26,6 +26,7 @@
         public override double GetArea()
         {
             return (D1 * D2) / 2;
+        }
 
         public override double GetPerimeter()
         {
