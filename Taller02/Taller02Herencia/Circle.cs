@@ -17,12 +17,12 @@
 
         public override double GetArea()
         {
-            return double.Parse($"{Math.PI * R * R,15:F5}");
+            return double.Parse($"{Math.PI * R * R,15:N5}");
         }
 
         public override double GetPerimeter()
         {
-            return double.Parse($"{2 * Math.PI * R,15:F5}");
+            return double.Parse($"{2 * Math.PI * R,15:N5}");
         }
 
         private static double ValidateR(double r)

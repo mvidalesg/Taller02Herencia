@@ -25,12 +25,12 @@
 
         public override double GetArea()
         {
-            return double.Parse($"{(D1 * D2) / 2,15:F5}");
+            return double.Parse($"{(D1 * D2) / 2,15:N5}");
         }
 
         public override double GetPerimeter()
         {
-            return double.Parse($"{4 * A,15:F5}");
+            return double.Parse($"{4 * A,10:N5}");
         }
 
         private static double ValidateD1(double d1)
