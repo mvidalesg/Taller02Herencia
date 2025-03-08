@@ -17,12 +17,12 @@
 
         public override double GetArea()
         {
-            return double.Parse($"{B * H,15:N5}");
+            return B * H;
         }
 
         public override double GetPerimeter()
         {
-            return double.Parse($"{2 * (A + B),10:N5}");
+            return 2 * (A + B);
         }
 
         private static double ValidateH(double h)
