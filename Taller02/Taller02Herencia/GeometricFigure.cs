@@ -14,7 +14,7 @@
 
         public override string ToString()
         {
-            return $"{Name} => Area.....: {GetArea(),15:F5}\t Perimeter: {GetPerimeter(),15:F5}";
+            return $"{Name} => Area......: {GetArea(),15:F5}\t Perimeter: {GetPerimeter(),15:F5}";
         }
     }
 }
