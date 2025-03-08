@@ -17,17 +17,18 @@
 
         public override double GetArea()
         {
-            return B * H;
+            return double.Parse($"{B * H,15:F5}");
+        }
+
+        public override double GetPerimeter()
+        {
+            return double.Parse($"{2 * (A + B),15:F5}");
         }
 
         private static double ValidateH(double h)
         {
             return h > 0 ? h : throw new ArgumentException("Height H must be positive.");
         }
-        public override string ToString()
-        {
-            return $"{GetType().Name,-15} => Area: {GetArea(),10:F5}  Perimeter: {GetPerimeter(),10:F5}";
-        }
-
+        
     }
 }

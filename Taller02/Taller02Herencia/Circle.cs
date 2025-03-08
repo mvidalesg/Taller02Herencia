@@ -17,22 +17,19 @@
 
         public override double GetArea()
         {
-            return Math.PI * R * R;
+            return double.Parse($"{Math.PI * R * R,15:F5}");
         }
 
         public override double GetPerimeter()
         {
-            return 2 * Math.PI * R;
+            return double.Parse($"{2 * Math.PI * R,15:F5}");
         }
 
         private static double ValidateR(double r)
         {
             return r > 0 ? r : throw new ArgumentException("Radius must be positive.");
         }
-        public override string ToString()
-        {
-            return $"{GetType().Name,-15} => Area: {GetArea(),10:F5}  Perimeter: {GetPerimeter(),10:F5}";
-        }
+       
 
     }
 }

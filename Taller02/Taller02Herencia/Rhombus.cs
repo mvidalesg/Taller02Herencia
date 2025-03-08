@@ -25,12 +25,12 @@
 
         public override double GetArea()
         {
-            return (D1 * D2) / 2;
+            return double.Parse($"{(D1 * D2) / 2,15:F5}");
         }
 
         public override double GetPerimeter()
         {
-            return 4 * A;
+            return double.Parse($"{4 * A,15:F5}");
         }
 
         private static double ValidateD1(double d1)
@@ -42,10 +42,6 @@
         {
             return d2 > 0 ? d2 : throw new ArgumentException("Diagonal D2 must be positive.");
         }
-        public override string ToString()
-        {
-            return $"{GetType().Name,-15} => Area: {GetArea(),10:F5}  Perimeter: {GetPerimeter(),10:F5}";
-        }
-
+       
     }
 }

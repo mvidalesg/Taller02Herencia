@@ -17,23 +17,19 @@
 
         public override double GetArea()
         {
-            return A * A;
+            return double.Parse($"{A * A,15:F5}");
         }
 
         public override double GetPerimeter()
         {
-            return 4 * A;
+            return double.Parse($"{4 * A,15:F5}");
         }
 
         private static double ValidateA(double a)
         {
             return a > 0 ? a : throw new ArgumentException("Side A must be positive.");
         }
-        public override string ToString()
-        {
-            return $"{GetType().Name,-15} => Area: {GetArea(),10:F5}  Perimeter: {GetPerimeter(),10:F5}";
-        }
-
+       
     }
 }
 
