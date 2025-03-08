@@ -29,6 +29,11 @@
         {
             return r > 0 ? r : throw new ArgumentException("Radius must be positive.");
         }
+        public override string ToString()
+        {
+            return $"{GetType().Name,-15} => Area: {GetArea(),10:F5}  Perimeter: {GetPerimeter(),10:F5}";
+        }
+
     }
 }
 

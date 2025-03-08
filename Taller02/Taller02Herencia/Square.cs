@@ -29,6 +29,11 @@
         {
             return a > 0 ? a : throw new ArgumentException("Side A must be positive.");
         }
+        public override string ToString()
+        {
+            return $"{GetType().Name,-15} => Area: {GetArea(),10:F5}  Perimeter: {GetPerimeter(),10:F5}";
+        }
+
     }
 }
 
